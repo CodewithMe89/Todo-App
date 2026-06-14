@@ -12,7 +12,8 @@ function AddTodo({onAddTodo}) {
         if(todo.trim() === "") return;
         onAddTodo({
             id: Date.now(),
-            text: todo
+            text: todo,
+            completed: false
         })
         setTodo('')
     }

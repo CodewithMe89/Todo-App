@@ -7,6 +7,7 @@ function TodoItem({ todo, onDeleteTodo }) {
     return (
         <>
             <div>
+                <input type="checkbox" />
                 <h3>{todo.text}</h3>
                 <button onClick={handleDeleteTodo}>Delete</button>
             </div>

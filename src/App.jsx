@@ -15,6 +15,16 @@ function App() {
     )
   }
 
+    function handleToggleComplete(id){
+      setTodos(prevTodos => 
+        prevTodos.map(target =>
+          target.id === id
+          ? {...target, completed: !target.completed}
+          :target
+        )
+      )
+    }
+
   return (
     <>
       <h1>Todo | App</h1>
