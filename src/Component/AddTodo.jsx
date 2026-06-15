@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-function AddTodo({onAddTodo}) {
+function AddTodo({ onAddTodo }) {
     const [todo, setTodo] = useState('')
 
-    function handleClick(e){
+    function handleClick(e) {
         let value = e.target.value
         setTodo(value)
     }
 
-    function handleAddTodo(){
-        if(todo.trim() === "") return;
+    function handleAddTodo() {
+        if (todo.trim() === "") return;
         onAddTodo({
             id: Date.now(),
             text: todo,
@@ -19,15 +19,15 @@ function AddTodo({onAddTodo}) {
     }
 
     return (
-        <>
-        <input 
-        type="text" 
-        placeholder='Enter Todo.....' 
-        value={todo} 
-        onChange={handleClick} />
+        <div className="add-todo">
+            <input
+                type="text"
+                placeholder='Enter Todo.....'
+                value={todo}
+                onChange={handleClick} />
 
-        <button onClick={handleAddTodo}>Add</button>
-        </>
+            <button onClick={handleAddTodo}>Add</button>
+        </div>
     )
 }
 export default AddTodo

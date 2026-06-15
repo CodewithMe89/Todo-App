@@ -1,22 +1,22 @@
 import TodoItem from './TodoItem'
 
-function TodoList({ todos, onDeleteTodo, handleToggleComplete,handleEditTodo}) {
+function TodoList({ todos, onDeleteTodo, handleToggleComplete, handleEditTodo }) {
     return (
-        <>
+        <ul className="todo-list">
             {
                 todos.length === 0
-                    ? <p>No todos yet.</p>
+                    ? <p className="no-todos">No todos yet.</p>
                     : todos.map(todo => (
-                        <div key={todo.id}>
+                        <li key={todo.id}>
                             <TodoItem
                                 todo={todo}
                                 onDeleteTodo={onDeleteTodo}
                                 handleToggleComplete={handleToggleComplete}
                                 handleEditTodo={handleEditTodo}
                             />
-                        </div>
+                        </li>
                     ))}
-        </>
+        </ul>
     )
 }
 export default TodoList

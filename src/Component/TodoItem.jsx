@@ -9,7 +9,7 @@ function TodoItem({ todo, onDeleteTodo, handleToggleComplete, handleEditTodo }) 
     }
 
     return (
-        <>
+        <div className="todo-item">
             {isEditing
                 ?
                 <>
@@ -18,34 +18,35 @@ function TodoItem({ todo, onDeleteTodo, handleToggleComplete, handleEditTodo }) 
                         placeholder="Enter New Text....."
                         value={editedText}
                         onChange={(e) => setEditedText(e.target.value)} />
-                    <button onClick={() => {
+
+                    <button className="btn btn-save" onClick={() => {
                         if (editedText.trim() === "")
                             return
 
                         handleEditTodo(todo.id, editedText)
-                        setIsEditing(false)}
+                        setIsEditing(false)
+                    }
                     }>Save</button>
 
-                    <button onClick={() => {
+                    <button className="btn btn-cancel" onClick={() => {
                         setEditedText(todo.text)
                         setIsEditing(false)
-                    }}>cancel</button>
+                    }}>Cancel</button>
                 </>
                 :
                 <>
                     <input type="checkbox"
                         checked={todo.completed}
                         onChange={() => { handleToggleComplete(todo.id) }} />
-                    <h3 style={{
-                        textDecoration: todo.completed
-                            ? "line-through"
-                            : "none"
-                    }}>{todo.text}</h3>
 
-                    <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={handleDeleteTodo}>Delete</button>
+                    <h3 className={todo.completed ? "completed" : ""}>
+                        {todo.text}
+                    </h3>
+
+                    <button className="btn btn-edit" onClick={() => setIsEditing(true)}>Edit</button>
+                    <button className="btn btn-delete" onClick={handleDeleteTodo}>Delete</button>
                 </>}
-        </>
+        </div>
     )
 }
 export default TodoItem
