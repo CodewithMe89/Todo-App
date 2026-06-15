@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem'
 
-function TodoList({ todos, onDeleteTodo, handleToggleComplete}) {
+function TodoList({ todos, onDeleteTodo, handleToggleComplete,handleEditTodo}) {
     return (
         <>
             {
@@ -12,6 +12,7 @@ function TodoList({ todos, onDeleteTodo, handleToggleComplete}) {
                                 todo={todo}
                                 onDeleteTodo={onDeleteTodo}
                                 handleToggleComplete={handleToggleComplete}
+                                handleEditTodo={handleEditTodo}
                             />
                         </div>
                     ))}

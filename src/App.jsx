@@ -33,6 +33,16 @@ function App() {
     )
   }
 
+  function handleEditTodo(id,newText){
+    setTodos(prevTodos =>
+      prevTodos.map(todo =>
+        todo.id === id
+        ? {...todo,text: newText}
+        : todo
+      )
+    )
+  }
+
   let filteredTodos;
 
   if (filter === "active") {
@@ -51,7 +61,7 @@ function App() {
       JSON.stringify(todos)
     );
   },[todos])
-  
+
   return (
     <>
       <h1>Todo | App</h1>
@@ -65,7 +75,8 @@ function App() {
       <TodoList 
       todos={filteredTodos} 
       onDeleteTodo={handleDeleteTodo} 
-      handleToggleComplete={handleToggleComplete} />
+      handleToggleComplete={handleToggleComplete}
+      handleEditTodo={handleEditTodo} />
     </>
   )
 }
