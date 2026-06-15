@@ -1,4 +1,4 @@
-function TodoItem({ todo, onDeleteTodo }) {
+function TodoItem({ todo, onDeleteTodo, handleToggleComplete }) {
 
     function handleDeleteTodo(){
         onDeleteTodo(todo.id)
@@ -7,8 +7,14 @@ function TodoItem({ todo, onDeleteTodo }) {
     return (
         <>
             <div>
-                <input type="checkbox" />
-                <h3>{todo.text}</h3>
+                <input type="checkbox"
+                checked={todo.completed} 
+                onChange={() => {handleToggleComplete(todo.id)}}/>
+                <h3 style={{
+                    textDecoration: todo.completed
+                    ? "line-through"
+                    : "none"
+                }}>{todo.text}</h3>
                 <button onClick={handleDeleteTodo}>Delete</button>
             </div>
         </>
