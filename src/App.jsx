@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import AddTodo from './Component/AddTodo'
 import TodoList from './Component/TodoList'
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+
+    return savedTodos
+    ? JSON.parse(savedTodos)
+    : [];
+  })
 
   const [filter, setFilter] = useState("all")
 
@@ -38,6 +44,14 @@ function App() {
   else {
     filteredTodos = todos
   }
+
+  useEffect(() => {
+    localStorage.setItem(
+      "todos",
+      JSON.stringify(todos)
+    );
+  },[todos])
+  
   return (
     <>
       <h1>Todo | App</h1>
